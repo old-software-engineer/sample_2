@@ -1,0 +1,17 @@
+location_1:
+  warehouse: warehouse_1
+  row: 1
+  bay: 1
+  height: 1
+
+location_2:
+  warehouse: warehouse_1
+  row: 2
+  bay: 2
+  height: 2
+
+empty:
+  warehouse: warehouse_1
+  row: 0
+  bay: 0
+  height: 0

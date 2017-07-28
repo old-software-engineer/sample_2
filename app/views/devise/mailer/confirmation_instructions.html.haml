@@ -1,0 +1,19 @@
+%div{ style: "font-family: Calibri; background-color: white; position: relative; width: 100%; text-align:center; height: auto; margin: 0 auto; padding-bottom: 30px;" }
+  = render "shared/mailer/header"
+
+  %img{ src: "http://i68.tinypic.com/67p1g4.png", alt: "laptop verification logo", style:"width: 180px; height: 180px; margin-top: 5px; margin-bottom: 3px" }
+
+  %div{ style: "padding-top: 15px; padding-left: 5px; color: #1c1c1c; font-weight: 400;" }
+    %h3{ style: "font-size: 22px; margin-bottom: 3px; font-family: Helvetica;" } Hi, Welcome to KeepSpace!
+    %p{ style: "font-size: 16px; padding-top: 0; margin-top: 0;" }
+      = "We are excited that you have chosen KeepSpace."
+      %br
+      = "While we set up your space, please verify your email address"
+      %br
+      = "so that we know it is really you."
+
+  %div{ style: "padding-bottom: 40px; padding-top: 25px; margin-top: 10px;" }
+    = link_to('Verify email address', confirmation_url(@resource, confirmation_token: @token),
+      { style: 'color: #f9f9f9; background-color: #399e03; text-decoration: none; padding: 12px 15px 12px 15px; font-weight: normal; font-size: 16px; font-family: Helvetica; border-radius: 6px;' })
+
+  = render "shared/mailer/footer"

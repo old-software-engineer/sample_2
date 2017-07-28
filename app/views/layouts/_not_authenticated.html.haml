@@ -1,0 +1,8 @@
+.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+  = render "layouts/header/not_authenticated"
+  = render "layouts/drawer/not_authenticated"
+
+  %main.mdl-layout__content
+    = render "layouts/flash"
+    #not-authenticated-main-content-root.flex-column.flex-align-items-center
+      = yield

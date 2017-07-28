@@ -1,0 +1,14 @@
+user_1:
+  email: one@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= 1.month.ago %>
+
+user_2:
+  email: two@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= 1.month.ago %>
+
+user_3:
+  email: three@email.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= 1.month.ago %>

@@ -1,0 +1,24 @@
+= render "devise/shared/oauth"
+
+= form_for(resource,
+  as: resource_name,
+  url: registration_path(resource),
+  html: { class: "flex-column flex-align-items-center" }) do |f|
+
+  - if resource.errors.any?
+    .danger-inverse.full-width.padding-v-10.border-rounded
+      %ul
+        - resource.errors.full_messages.each do |msg|
+          %li
+            = msg
+
+  .mdl-textfield.mdl-js-textfield
+    %input#user_email.mdl-textfield__input{ type: "email", name: "user[email]", value: resource.email }
+    %label.mdl-textfield__label{ for: "user_email" } Email
+
+  .mdl-textfield.mdl-js-textfield
+    %input#user_password.mdl-textfield__input{ type: "password", name: "user[password]", placeholder: "Password - minimum #{@minimum_password_length} characters" }
+    %label.mdl-textfield__label{ for: "user_password" } Password
+
+  %button.auth-button-lg.auth-primary-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--colored{ type: "submit", "data-disable-with": "Signing up..." }
+    = "Sign up"

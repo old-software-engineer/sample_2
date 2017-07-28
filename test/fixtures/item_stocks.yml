@@ -1,0 +1,29 @@
+item_stock_1:
+  item: item_1
+  adjustment_type: pick_up
+  quantity_diff: 10
+  quantity_in_storage: 10
+
+item_stock_2:
+  item: item_2
+  adjustment_type: pick_up
+  quantity_diff: 1
+  quantity_in_storage: 1
+
+item_stock_3:
+  item: item_1
+  adjustment_type: delivery
+  quantity_diff: -5
+  quantity_in_storage: 5
+
+item_stock_4:
+  item: item_2
+  adjustment_type: delivery
+  quantity_diff: -1
+  quantity_in_storage: 0
+
+item_stock_5:
+  item: item_3
+  adjustment_type: pick_up
+  quantity_diff: 5
+  quantity_in_storage: 5

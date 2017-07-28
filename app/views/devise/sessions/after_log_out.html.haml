@@ -1,0 +1,10 @@
+- content_for :header do
+  %h3 Logged out
+  %p#header-sub-text You are now logged out
+
+- content_for :content do
+  = link_to("Back to log in",
+    new_user_session_path,
+    class:"auth-button-lg auth-primary-button link-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored")
+
+= render "layouts/devise"

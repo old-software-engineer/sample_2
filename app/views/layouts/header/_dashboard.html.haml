@@ -1,0 +1,36 @@
+%header#header-dashboard.header.mdl-layout__header
+  %div.mdl-layout__header-row
+    %span.mdl-layout-title
+      %a#header-title{ href: root_path }
+        = image_tag(asset_path("ks-logo.png"), id: "header-logo-img")
+        %span KeepSpace
+
+    -# add spacer to align nav to right
+    %div.mdl-layout-spacer
+
+    -# nav
+    %nav.mdl-navigation.mdl-layout--large-screen-only
+      %a.header-link.mdl-navigation__link{ href: "tel:1800818971" }
+        %span
+          %i.material-icons phone
+          1800 818 971
+
+    %nav.mdl-navigation
+      = link_to pick_up_new_booking_path do
+        %button.icon-button.mdl-button.mdl-js-button.mdl-button--icon
+          %i#dashboard-add-icon.material-icons add_circle_outline
+          %div.text-transform-none.mdl-tooltip{ "data-mdl-for": "dashboard-add-icon" } Inbound Order
+
+      %button#dashboard-more-vert.icon-button.mdl-button.mdl-js-button.mdl-button--icon
+        %i#dashboard-more-vert-icon.material-icons more_vert
+        %div.text-transform-none.mdl-tooltip{ "data-mdl-for": "dashboard-more-vert-icon" } More...
+
+      %ul#dashboard-more-vert-dropdown.mdl-menu.mdl-menu--bottom-right.mdl-js-menu.mdl-js-ripple-effect{ for: "dashboard-more-vert" }
+        %li.mdl-menu__item
+          = link_to "Account", account_path, class: "block"
+        %li.mdl-menu__item
+          = link_to "Log out", destroy_user_session_path, method: :delete, class: "block"
+
+  - if content_for? :subnav
+    .mdl-layout__tab-bar.mdl-js-ripple-effect
+      = yield :subnav

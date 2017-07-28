@@ -1,0 +1,36 @@
+- content_for :header do
+  %h3 Log in
+
+- content_for :content do
+  = render "devise/shared/oauth"
+
+  = form_for(resource,
+    as: resource_name,
+    url: session_path(resource_name),
+    html: { class: "flex-column flex-align-items-center" }) do |f|
+
+    - if alert
+      .danger-inverse.full-width.padding-v-10.border-rounded.text-center
+        = alert
+
+    .mdl-textfield.mdl-js-textfield
+      %input#user_email.mdl-textfield__input{ type: "email", name: "user[email]", value: resource.email }
+      %label.mdl-textfield__label{ for: "user_email" } Email
+
+    .mdl-textfield.mdl-js-textfield
+      %input#user_password.mdl-textfield__input{ type: "password", name: "user[password]" }
+      %label.mdl-textfield__label{ for: "user_password" } Password
+
+    .flex-align-self-end.margin-bottom-10
+      = link_to "Forgot your password?", new_user_password_path, class: "auth-link"
+
+    %button.auth-button-lg.auth-primary-button.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect.mdl-button--colored{ type: "submit", "data-disable-with": "Logging in..." }
+      Log in
+
+- content_for :footer do
+  %span.margin-top-10
+    %span New to KeepSpace?
+    = link_to "Sign up",  new_user_registration_path, class:"auth-link"
+  = link_to "Didn't receive your confirmation email?", new_user_confirmation_path, class:"auth-link margin-v-10"
+
+= render "layouts/devise"

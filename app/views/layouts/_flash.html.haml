@@ -1,0 +1,9 @@
+-if alert
+  .flash.danger-inverse
+    %span.flash-message= alert
+    %i.flash-clear-icon.material-icons clear
+
+- elsif notice
+  .flash.ok-inverse
+    %span.flash-message= notice
+    %i.flash-clear-icon.material-icons clear

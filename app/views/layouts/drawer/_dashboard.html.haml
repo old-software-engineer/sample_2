@@ -1,0 +1,23 @@
+#drawer-dashboard.drawer.mdl-layout__drawer
+  %nav#drawer-nav.mdl-navigation
+    = link_to account_path, class: "drawer-link mdl-navigation__link" do
+      %div#drawer-account-root.flex-row.flex-align-items-center
+        %div#account-online-root
+          %div#account-online
+        %span#account-email
+          = current_user.email
+    = link_to pick_up_new_booking_path, id: "new-pick-up-link", class: "content-center" do
+      %button.full-width.border-rounded.text-transform-none.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect
+        Inbound Order
+
+  %nav.mdl-navigation
+    = active_link_to "Getting Started", welcome_get_started_path, class: "drawer-link mdl-navigation__link"
+    = active_link_to "Space", items_path, class: "drawer-link mdl-navigation__link"
+    = active_link_to "Orders", bookings_path, class: "drawer-link mdl-navigation__link"
+    = active_link_to "Account", account_path, class: "drawer-link mdl-navigation__link"
+    = active_link_to "Monthly Usage", invoices_path, class: "drawer-link mdl-navigation__link"
+
+  %nav#drawer-footer-nav.mdl-navigation
+    = link_to "Log out", destroy_user_session_path, method: :delete, class: "drawer-link mdl-navigation__link"
+    %a.drawer-link.mdl-navigation__link{ href: "tel:1800818971" }
+      %span 1800 818 971

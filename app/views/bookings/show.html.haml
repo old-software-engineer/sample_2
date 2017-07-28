@@ -1,0 +1,36 @@
+= render "shared/paper" do
+  .container
+    #show-booking-header.flex-row.flex-align-items-center.border-line-bottom
+      .flex-row.flex-align-items-center
+        = render "shared/back", path: bookings_path
+        %h3
+          = @booking.booking_type.to_s.humanize
+          - if @booking.canceled?
+            %span.tag.danger-inverse canceled
+
+      - if policy(@booking).cancel?
+        = button_to "Cancel booking",
+          { action: :cancel, id: @booking.id },
+          method: :patch,
+          data: { confirm: "Are you sure you want to cancel your booking?", disable_with: "Canceling..." },
+          form_class: "pull-right",
+          class: "danger-inverse border-rounded text-transform-none mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+
+    .padding-v-20
+      = render "booking_overview", booking: @booking
+
+    - unless @booking.items.empty?
+      .flex-row.flex-align-items-center.border-line-bottom
+        %h4
+          = "Items"
+          %span.tag.info-inverse
+            = pluralize @booking.items.count, "item"
+
+        %span.font-md.bold.pull-right
+          = "Total #{number_with_precision(@booking.booking_items.total_volume,precision:4)}"
+          m<sup>3</sup>
+
+      = render "booking_items", booking: @booking
+
+    .margin-top-30
+      = link_to "Back", bookings_path, class: "padding-10"

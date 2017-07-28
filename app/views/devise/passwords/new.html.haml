@@ -1,0 +1,21 @@
+- content_for :header do
+  %h3 Forgot your password?
+  %p.header-sub-text Enter your email and we'll send you a reset link
+
+- content_for :content do
+  = simple_form_for(resource,
+    as: resource_name,
+    url: password_path(resource_name)) do |f|
+
+    .flex-column.flex-align-items-center
+      = f.input :email
+
+      .margin-top-30
+        = f.submit("Reset password",
+          id: "reset-password",
+          class: "auth-button-lg auth-primary-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored",
+          data: { disable_with: "Sending email..." })
+
+  = render "devise/shared/content_footer_links"
+
+= render "layouts/devise"

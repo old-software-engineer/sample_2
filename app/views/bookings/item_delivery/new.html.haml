@@ -1,0 +1,14 @@
+= render "shared/paper" do
+  .container
+    .flex-row.flex-align-items-center.border-line-bottom
+      .flex-row.flex-align-items-center
+        = render "shared/back", path: items_path
+        %h3 Delivery Order
+
+    = render "shared/react_container"
+
+= content_tag :div, nil, id: "json-data",
+  data: { items: render_json("items/index"),
+          contact: @contact }
+
+= javascript_include_tag "newDelivery.bundle"

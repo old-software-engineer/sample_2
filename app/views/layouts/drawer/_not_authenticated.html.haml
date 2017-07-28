@@ -1,0 +1,7 @@
+#drawer-not-authenticated.drawer.mdl-layout__drawer
+  %span#drawer-title.mdl-layout-title
+  %nav.mdl-navigation
+    = link_to "Sign up", new_user_registration_path, class: "drawer-link mdl-navigation__link"
+    = link_to "Log in", new_user_session_path, class: "drawer-link mdl-navigation__link"
+    %a.drawer-link.mdl-navigation__link{ href: "tel:1800818971" }
+      %span 1800 818 971

@@ -1,0 +1,23 @@
+%ul#delivery-items
+  - booking.items.each_with_index do |item, i|
+    %li.border-line-top
+      .delivery-item.margin.flex-row.flex-align-items-center
+        .padding-10
+          = i + 1
+
+        = link_to item do
+          = image_tag item.image.thumb.url, class: "mdl-shadow--2dp delivery-item-img border-rounded"
+
+        .item-detail.flex-column.flex-align-self-start
+          %span.item-title
+            = link_to item.title, item
+          %span.item-description
+            = item.description
+          %span.itemSKU
+            = "SKU: #{item.sku}"
+          %span
+            = "Quantity: #{booking.booking_items.map { |booking_item| booking_item.quantity_ordered}}"
+
+        %span.pull-right.flex-align-self-start
+          = number_with_precision(item.volume,precesion:4)
+          m<sup>3</sup></span>

@@ -1,0 +1,25 @@
+defaults: &defaults
+  user: user_1
+  title: a
+  physical_id: a
+  image: test.png
+  sku: "abc"
+  weight: 1
+  volume: 1
+  height: 1
+  width: 1
+  length: 1
+  location: location_1
+
+item_1:
+  <<: *defaults
+
+item_2:
+  <<: *defaults
+
+item_3:
+  <<: *defaults
+  user: user_2
+
+empty_stock:
+  <<: *defaults

@@ -1,0 +1,14 @@
+- content_for :header do
+  %h3 Almost there...
+  %p#almost-there-header-sub-text.info.border-line-bottom
+    Please check your email to activate your account
+
+- content_for :content do
+  %p#almost-there-text No confirmation email received?
+  %p#almost-there-sub-text Please check your <b>spam folder</b> or
+
+  = link_to("Resend confirmation email", new_user_confirmation_path, id:"almost-there-button", class: "auth-button-lg auth-primary-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored")
+
+  = render "devise/shared/content_footer_links"
+
+= render "layouts/devise"

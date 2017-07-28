@@ -1,0 +1,67 @@
+%table
+  %tbody
+    %tr
+      %td.td-label Date
+      %td
+        = format_date_day_of_week booking.created_at
+
+    %tr{ valign: "top"}
+      %td.td-label Contact
+      %td
+        %span#contact-name
+          = booking.contact_name
+        %br
+        = booking.address
+        - if booking.suburb.present?
+          %br
+          = booking.suburb
+        - if booking.city.present?
+          %br
+          = booking.city
+        - if booking.state.present?
+          %br
+          = booking.state
+        - if booking.country.present?
+          %br
+          = booking.country
+
+    - if booking.contact_phone.present?
+      %tr
+        %td.td-label Phone
+        %td
+          = booking.contact_phone
+
+    - if booking.email.present?
+      %tr
+        %td.td-label Email
+        %td
+          = booking.email
+
+    %tr
+      %td.td-label Status
+      %td.font-lg
+        - if booking.canceled?
+          %span.tag.danger-inverse canceled
+        - elsif booking.processed?
+          %span.tag.blue-inverse processed
+        - elsif booking.pending?
+          %span.tag.grey-inverse pending
+        - elsif booking.Ready_to_Ship?
+          %span.tag.ok-inverse Ready to Ship
+
+    %tr
+      %td.td-label Reference No.
+      %td
+        = booking.reference
+
+    - if booking.tracking_id.present?
+      %tr
+        %td.td-label Tracking ID
+        %td
+          <a href="https://auspost.com.au/parcels-mail/track.html#/track/" target="_blank">#{booking.tracking_id}</a>
+
+    - if booking.comment.present?
+      %tr
+        %td.td-label Comment
+        %td
+          =@booking.comment

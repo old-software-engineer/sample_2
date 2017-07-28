@@ -1,0 +1,15 @@
+booking_1_item_stock_1:
+  booking: booking_1
+  item_stock: item_stock_1
+
+booking_1_item_stock_2:
+  booking: booking_1
+  item_stock: item_stock_2
+
+booking_2_item_stock_3:
+  booking: booking_2
+  item_stock: item_stock_3
+
+booking_2_item_stock_4:
+  booking: booking_2
+  item_stock: item_stock_4

@@ -1,0 +1,9 @@
+#devise-layout-root
+  #devise-layout-content.mdl-shadow--2dp.border-rounded.flex-column.flex-align-items-center
+    = yield :header
+
+    .flex-column.flex-align-items-center.margin-v-10
+      = yield :content
+
+  .flex-column.flex-align-items-center
+    = yield :footer

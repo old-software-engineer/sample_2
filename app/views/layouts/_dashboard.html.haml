@@ -1,0 +1,10 @@
+.mdl-layout.mdl-js-layout.mdl-layout--fixed-drawer.mdl-layout--fixed-header
+  = render "layouts/header/dashboard"
+  = render "layouts/drawer/dashboard"
+
+  %main.mdl-layout__content
+    = render "layouts/flash"
+    .main-content-root.content-center
+      - if content_for? :main_header
+        = yield :main_header
+      = yield

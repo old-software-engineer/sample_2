@@ -1,0 +1,15 @@
+= render "shared/paper" do
+  #thanks-root.flex-column.flex-align-items-center.padding-10
+    .text-center.padding-10
+      %h2.margin-0 Order Added
+
+    #thanks-content.flex-column.flex-align-items-center.padding-10.border-line-top
+      %p.notice.notice-ok
+        Thanks for taking the time to fill out this Order. 
+      %p
+        1. An email has been notified to operations on the the requirement to process this order, and
+        2. This Order has been added to your orders page to which you can click the link here to view it.
+
+      = link_to bookings_path do
+        %button#thanks-view-bookings-button.border-rounded.text-transform-none.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect
+          View bookings

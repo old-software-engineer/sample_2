@@ -1,0 +1,16 @@
+- content_for :header do
+  %h3 Sign up for Free
+
+- content_for :content do
+  #sign_up_step.sign-up-step-root
+    = render partial: "sign_up_form"
+
+- content_for :footer do
+  .margin-top-10
+    %span Already have an account?
+    = link_to "Log in",  new_user_session_path, class:"auth-link"
+
+  .margin-v-10
+    = link_to "Didn't receive your confirmation email?", new_user_confirmation_path, class:"auth-link"
+
+= render "layouts/devise"

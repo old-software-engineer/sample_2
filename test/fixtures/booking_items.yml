@@ -1,0 +1,29 @@
+booking_1_item_1:
+  booking: booking_1
+  item: item_1
+  quantity_ordered: 1
+
+booking_1_item_2:
+  booking: booking_1
+  item: item_2
+  quantity_ordered: 1
+
+booking_2_item_1:
+  booking: booking_2
+  item: item_1
+  quantity_ordered: 10
+
+booking_2_item_2:
+  booking: booking_2
+  item: item_2
+  quantity_ordered: 10
+
+booking_3_item_1:
+  booking: booking_3
+  item: item_1
+  quantity_ordered: 1
+
+booking_5_item_1:
+  booking: booking_5
+  item: item_1
+  quantity_ordered: 100

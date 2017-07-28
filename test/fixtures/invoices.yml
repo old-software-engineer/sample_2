@@ -1,0 +1,13 @@
+invoice_1:
+  user: user_1
+  space_usage: 10
+  num_items: 10
+  invoice_date: <%= 1.month.ago %>
+  pdf_url: https://google.com
+
+invoice_2:
+  user: user_1
+  space_usage: 10
+  num_items: 10
+  invoice_date: <%= 2.month.ago %>
+  pdf_url: https://google.com

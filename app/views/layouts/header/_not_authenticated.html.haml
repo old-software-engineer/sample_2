@@ -1,0 +1,18 @@
+%header#header-not-authenticated.header.mdl-layout__header
+  %div.mdl-layout__header-row
+    %span.mdl-layout-title
+      %a#header-title{ href: "http://www.keepspace.com.au" }
+        = image_tag(asset_path("ks-logo.png"), id: "header-logo-img")
+        %span KeepSpace
+
+    -# add spacer to align nav to right
+    %div.mdl-layout-spacer
+
+    -# nav
+    %nav.mdl-navigation.mdl-layout--large-screen-only
+      %a.header-link.mdl-navigation__link{ href: "tel:1800818971" }
+        %span
+          %i.material-icons phone
+          1800 818 971
+      = link_to "Log in", new_user_session_path, class: "header-link mdl-navigation__link"
+      = link_to "Sign up", new_user_registration_path, class: "header-link mdl-navigation__link"

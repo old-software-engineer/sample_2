@@ -1,0 +1,82 @@
+= render "shared/paper" do
+  .container
+    #show-booking-header.flex-row.flex-align-items-center
+      %h3
+        Orders
+      = link_to pick_up_new_booking_path, class: "pull-right" do
+        %button.border-rounded.text-transform-none.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored.mdl-js-ripple-effect
+          Inbound Order
+
+    - if !@bookings.empty?
+      %table#bookings-table.border-line-h-none.mdl-data-table.mdl-js-data-table
+        %thead
+          -# overwrite mdl th style. could not do it with css class
+          - style = "font-weight: bold; font-size: 1.3em; color: #424242;"
+          %tr
+            %th.mdl-data-table__cell--non-numeric{ style: style } Order
+            %th.mdl-data-table__cell--non-numeric{ style: style } Date
+            %th{ style: style } Status
+            %th{ style: style } Contact
+            %th{ style: style } Reference
+            %th{ style: style } Space
+        %tbody
+          - @bookings.each do |booking|
+            - classes = ["row", ("read" if booking.read)]
+            %tr{ class: classes, "data-link": booking_path(booking) }
+              %td.td-bold.mdl-data-table__cell--non-numeric{:width => "20%"}
+                .flex-column
+                  .flex-row.flex-align-items-center
+                    = booking.booking_type.to_s.humanize
+
+                  - if booking.delivery? && booking.items.count > 0
+                    %span.sub-text
+                      = pluralize booking.items.count, "item"
+                %td.mdl-data-table__cell--non-numeric{ style: "font-size: 15px"}
+                  = format_date_day_of_week booking.created_at
+
+                %td{ style: "font-size: 22px; color: #3366cc", :width => "20%"}
+                  - if booking.canceled?
+                    %span.tag.danger-inverse canceled
+                  - elsif booking.processed?
+                    %span.tag.blue-inverse processed
+                  - elsif booking.pending?
+                    %span.tag.grey-inverse pending
+                  - elsif booking.Ready_to_Ship?
+                    %span.tag.ok-inverse Ready to Ship
+
+
+                %td{ style: "font-size: 15px", :width => "20%"}
+                  %span
+                  =booking.contact_name
+                %td{ style: "font-size: 15px", :width => "15%"}
+                  = booking.reference
+                %td.td-bold.pull-right.full-width{:width => "20%"}
+                  - items_total_volume = booking.booking_items.total_volume
+
+                  - if items_total_volume > 0
+                    - if booking.pick_up?
+                      %span.ok +
+                      = number_with_precision(items_total_volume,precesion:4)
+                      %span.sub-text m<sup>3</sup>
+                    - elsif booking.delivery?
+                      %span.danger -
+                      = number_with_precision(items_total_volume,precesion:4)
+                      %span.sub-text m<sup>3</sup>
+                  - else
+                    %span
+                      0
+                      %span.sub-text m<sup>3</sup>
+    - else
+      %p#no-booking.margin.border-line-top You have no booking
+
+:javascript
+  $("tr[data-link]").click(function() {
+    var path = $(this).data("link")
+
+    if (Turbolinks) {
+      Turbolinks.visit(path)
+    } else {
+      // fallback
+      window.location = path
+    }
+  })

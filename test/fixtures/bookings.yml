@@ -1,0 +1,45 @@
+defaults: &defaults
+  user: user_1
+  address: 123 ABC Street WA 6105
+  contact_name: First Last
+  contact_phone: 0123456789
+
+booking_1:
+  <<: *defaults
+  booking_type: pick_up
+  status: processed
+
+booking_2:
+  <<: *defaults
+  booking_type: delivery
+  status: processed
+
+booking_3:
+  <<: *defaults
+  booking_type: delivery
+
+booking_4:
+  <<: *defaults
+  booking_type: delivery
+  user: user_2
+
+booking_5:
+  <<: *defaults
+  status: pending
+
+pending:
+  <<: *defaults
+  booking_type: delivery
+  status: pending
+
+can_cancel:
+  <<: *defaults
+
+cannot_cancel:
+  <<: *defaults
+
+can_batch_create:
+  <<: *defaults
+
+today:
+  <<: *defaults

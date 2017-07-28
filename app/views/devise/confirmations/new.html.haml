@@ -1,0 +1,23 @@
+- content_for :header do
+  %h3 Resend confirmation email
+  %p.header-sub-text
+    Enter your email and we'll send you instructions for activating your account
+
+- content_for :content do
+  = form_for resource,
+      as: resource_name,
+      url: confirmation_path(resource_name),
+      html: { method: :post, class: "flex-column flex-align-items-center" } do |f|
+
+    #email.mdl-textfield.mdl-js-textfield
+      %input#user_email.mdl-textfield__input{ type: "email", name:"user[email]", autofocus: true }
+      %label.mdl-textfield__label{ for: "user_email" } Email
+
+    = f.submit "Resend confirmation",
+        id: "confirmation-new-submit-button",
+        class: "auth-button-lg auth-primary-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored",
+        "data-disable-with": "Resending..."
+
+  = render "devise/shared/content_footer_links"
+
+= render "layouts/devise"
