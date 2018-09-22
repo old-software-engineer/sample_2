@@ -1,0 +1,22 @@
+<div id="study_data">
+  <%= javascript_tag "var studyId = '#{@study.id}';" %>
+  <%= javascript_tag "var studyVersionId = '#{@study_version.id}';" %>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: "shared/studies/versions/nav_panel", locals: { show: {form: false, variables: true, variable: true}, view: "variable", title: { form: "", variables: "#{@domain.prefix}", variable: "#{@variable.short_name}" } } %>
+  </div>
+</div>
+<div class="row">
+	<div class="col-md-2">
+    <%= render partial: "shared/studies/variables/info_panel" %>
+  </div>
+	<div class="col-md-5">
+		<%= render partial: "shared/studies/variables/variants_edit_panel" %>
+		<%= render partial: "shared/studies/variables/term_info_panel" %>
+  </div>
+	<div class="col-md-5">
+    <%= render partial: "shared/studies/variables/comment_edit_panel" %>
+    <%= render partial: "shared/studies/variables/derivation_edit_panel" %>
+  </div>
+</div>
